@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moraes & Moreira Logística | Soluções de Originação e Transporte Multimodal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#003366',
+                            dark: '#002244',
+                            light: '#004488'
+                        },
+                        agroGreen: {
+                            DEFAULT: '#336633',
+                            dark: '#244724',
+                            light: '#478547'
+                        },
+                        chumbo: {
+                            DEFAULT: '#666666',
+                            dark: '#444444',
+                            light: '#888888'
+                        },
+                        iceBg: '#F4F6F8'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F4F6F8;
+            color: #1A202C;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 51, 102, 0.08);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 34, 68, 0.92) 0%, rgba(0, 51, 102, 0.85) 50%, rgba(51, 102, 51, 0.75) 100%),
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+        }
+
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 51, 102, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVBAR HEADER -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 custom-shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- BRAND LOGO (M&M Moraes & Moreira Logística - No Arrows) -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="flex items-center justify-center bg-navy text-white font-extrabold px-3 py-2 rounded border-b-4 border-agroGreen transition-transform group-hover:scale-105">
+                        <span class="text-xl sm:text-2xl tracking-tighter text-white">M<span class="text-agroGreen-light">&amp;</span>M</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-navy text-lg sm:text-xl tracking-tight leading-none">Moraes &amp; Moreira</span>
+                        <span class="font-heading font-medium text-agroGreen text-xs tracking-widest uppercase mt-0.5">LOGÍSTICA</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION LINKS -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-navy font-medium text-sm transition-colors">Início</a>
+                    <a href="#servicos" class="text-gray-700 hover:text-navy font-medium text-sm transition-colors">Serviços</a>
+                    <a href="#cotacao" class="text-gray-700 hover:text-navy font-medium text-sm transition-colors">Simulador de Cotação</a>
+                    <a href="#sobre" class="text-gray-700 hover:text-navy font-medium text-sm transition-colors">Quem Somos</a>
+                    <a href="#contato" class="text-gray-700 hover:text-navy font-medium text-sm transition-colors">Contato</a>
+                </nav>
+
+                <!-- DIRECT WHATSAPP CTA -->
+                <div class="hidden sm:flex items-center">
+                    <a href="https://wa.me/5563981540801?text=Ol%C3%A1,%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20origina%C3%A7%C3%A3o%20e%20log%C3%ADstica%20Moraes%20%26%20Moreira." target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-agroGreen hover:bg-agroGreen-dark text-white px-5 py-2.5 rounded-lg font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        <span>Falar no WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-navy hover:text-agroGreen p-2 focus:outline-none" aria-label="Abrir Menu">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block text-gray-800 hover:text-navy font-medium py-2 border-b border-gray-100">Início</a>
+            <a href="#servicos" class="block text-gray-800 hover:text-navy font-medium py-2 border-b border-gray-100">Serviços</a>
+            <a href="#cotacao" class="block text-gray-800 hover:text-navy font-medium py-2 border-b border-gray-100">Simulador de Cotação</a>
+            <a href="#sobre" class="block text-gray-800 hover:text-navy font-medium py-2 border-b border-gray-100">Quem Somos</a>
+            <a href="#contato" class="block text-gray-800 hover:text-navy font-medium py-2 border-b border-gray-100">Contato</a>
+            <a href="https://wa.me/5563981540801?text=Ol%C3%A1,%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20origina%C3%A7%C3%A3o%20e%20log%C3%ADstica%20Moraes%20%26%20Moreira." target="_blank" class="flex items-center justify-center gap-2 w-full bg-agroGreen text-white py-3 rounded-lg font-heading font-semibold text-sm uppercase tracking-wider mt-4">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Falar no WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO BANNER -->
+    <section id="inicio" class="relative hero-gradient text-white py-24 lg:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
+                    <span class="w-2.5 h-2.5 rounded-full bg-agroGreen-light animate-pulse"></span>
+                    <span class="text-xs uppercase font-heading tracking-wider font-semibold text-gray-200">Originação &amp; Multimodalidade no Agro</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white mb-6">
+                    Uma Jornada Global de <span class="text-emerald-400">Eficiência Integrada</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-gray-200 mb-8 font-light leading-relaxed">
+                    Conectamos as principais áreas de produção agrícola do Brasil aos grandes corredores de exportação mundiais. Expertise em originação de commodities, arbitragem de basis e soluções logísticas em modal Rodoviário, Ferroviário, Marítimo e Aéreo.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#cotacao" class="inline-flex items-center justify-center gap-2 bg-agroGreen hover:bg-agroGreen-dark text-white px-8 py-4 rounded-lg font-heading font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-xl hover:-translate-y-0.5">
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                        <span>Solicitar Cotação</span>
+                    </a>
+                    <a href="#servicos" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-lg font-heading font-bold text-sm uppercase tracking-wider transition-all duration-300">
+                        <i data-lucide="wheat" class="w-5 h-5"></i>
+                        <span>Soluções Agrícolas</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL FAST HIGHLIGHT STRIP -->
+        <div class="mt-16 border-t border-white/10 bg-black/20 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <i data-lucide="truck" class="w-8 h-8 text-emerald-400 flex-shrink-0"></i>
+                        <div>
+                            <div class="font-heading font-bold text-sm text-white">Rodoviário</div>
+                            <div class="text-xs text-gray-300">Frota pesada &amp; Frota de apoio</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <i data-lucide="train" class="w-8 h-8 text-emerald-400 flex-shrink-0"></i>
+                        <div>
+                            <div class="font-heading font-bold text-sm text-white">Ferroviário</div>
+                            <div class="text-xs text-gray-300">Transbordo &amp; Arco Norte</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <i data-lucide="ship" class="w-8 h-8 text-emerald-400 flex-shrink-0"></i>
+                        <div>
+                            <div class="font-heading font-bold text-sm text-white">Marítimo</div>
+                            <div class="text-xs text-gray-300">Exportação de Grãos &amp; Portos</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <i data-lucide="plane" class="w-8 h-8 text-emerald-400 flex-shrink-0"></i>
+                        <div>
+                            <div class="font-heading font-bold text-sm text-white">Aéreo</div>
+                            <div class="text-xs text-gray-300">Cargas expressas &amp; Insumos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SERVIÇOS INTERATIVOS -->
+    <section id="servicos" class="py-20 bg-iceBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-heading font-bold uppercase tracking-widest text-agroGreen mb-2">Excelência Operacional</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">Soluções Logísticas e de Originação</h3>
+                <p class="mt-4 text-gray-600 text-base leading-relaxed">
+                    Integrando tecnologia de ponta, inteligência de fretes e presença sólida nas principais praças produtoras do agronegócio nacional.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- CARD 1 -->
+                <div class="glass-card rounded-xl p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-navy flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-navy/10 rounded-lg flex items-center justify-center text-navy mb-6 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="sprout" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-navy mb-3">Originação Estratégica</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Compra e originação consultiva de Soja, Milho e Gergelim (Safrinha 2027), aliando travamento de margens ao planejamento do produtor.
+                        </p>
+                    </div>
+                    <button onclick="openServiceModal('origination')" class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-agroGreen hover:text-agroGreen-dark transition-colors">
+                        <span>Saber Mais</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="glass-card rounded-xl p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-agroGreen flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-agroGreen/10 rounded-lg flex items-center justify-center text-agroGreen mb-6 group-hover:bg-agroGreen group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="route" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-navy mb-3">Engenharia de Rota</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Mapeamento detalhado de trechos rodoviários e pontos de transbordo no MATOPIBA, reduzindo o tempo de trânsito e custos com fretes.
+                        </p>
+                    </div>
+                    <button onclick="openServiceModal('routing')" class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-agroGreen hover:text-agroGreen-dark transition-colors">
+                        <span>Saber Mais</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="glass-card rounded-xl p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-chumbo flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-chumbo/10 rounded-lg flex items-center justify-center text-chumbo mb-6 group-hover:bg-chumbo group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="satellite" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-navy mb-3">Rastreamento Global</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Telemetria avançada e acompanhamento em tempo real das cargas da fazenda ao porto, garantindo previsibilidade de entrega.
+                        </p>
+                    </div>
+                    <button onclick="openServiceModal('tracking')" class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-agroGreen hover:text-agroGreen-dark transition-colors">
+                        <span>Saber Mais</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="glass-card rounded-xl p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-navy flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-navy/10 rounded-lg flex items-center justify-center text-navy mb-6 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="network" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-navy mb-3">Transporte Multimodal</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Integração perfeita entre frotas rodoviárias, malha ferroviária e terminais portuários estratégicos do Brasil.
+                        </p>
+                    </div>
+                    <button onclick="openServiceModal('multimodal')" class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-agroGreen hover:text-agroGreen-dark transition-colors">
+                        <span>Saber Mais</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="glass-card rounded-xl p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-agroGreen flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-agroGreen/10 rounded-lg flex items-center justify-center text-agroGreen mb-6 group-hover:bg-agroGreen group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="file-check-2" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-navy mb-3">Gestão de Contratos</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Estruturação customizada de contratos futuros, Barter e arbitragem de prêmios de exportação com plena segurança jurídica.
+                        </p>
+                    </div>
+                    <button onclick="openServiceModal('contracts')" class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-agroGreen hover:text-agroGreen-dark transition-colors">
+                        <span>Saber Mais</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="glass-card rounded-xl p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-chumbo flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-chumbo/10 rounded-lg flex items-center justify-center text-chumbo mb-6 group-hover:bg-chumbo group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-navy mb-3">Inteligência de Mercado</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Análises diárias de fretes, comportamento do Basis e tendências de prêmios nos portos para orientação da alta gestão.
+                        </p>
+                    </div>
+                    <button onclick="openServiceModal('intelligence')" class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-agroGreen hover:text-agroGreen-dark transition-colors">
+                        <span>Saber Mais</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SIMULADOR DE COTAÇÃO & ORIGINAÇÃO -->
+    <section id="cotacao" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5">
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-agroGreen">Agilidade Comercial</span>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight mt-2 mb-4">Simulador de Cotação de Frete &amp; Originação</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Faça uma estimativa rápida do volume de frete ou lote de originação de commodities. Receba o cálculo preliminar e envie diretamente para nossa equipe comercial no WhatsApp.
+                    </p>
+                    
+                    <div class="space-y-4 border-t border-gray-100 pt-6">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-navy/10 text-navy mt-1">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-navy text-sm">Preços alinhados ao Mercado</h5>
+                                <p class="text-xs text-gray-500">Estimativas ajustadas à matriz regional de frete do MATOPIBA e portos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-agroGreen/10 text-agroGreen mt-1">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-navy text-sm">Garantia de Liquidez</h5>
+                                <p class="text-xs text-gray-500">Contratos futuros para soja, milho e especialidades (gergelim).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIMULATOR FORM -->
+                <div class="lg:col-span-7">
+                    <div class="bg-iceBg rounded-2xl p-6 sm:p-8 border border-gray-200 custom-shadow">
+                        <form id="calc-form" onsubmit="handleCalculate(event)" class="space-y-5">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-2">Modal de Transporte</label>
+                                    <select id="modal-select" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy font-medium">
+                                        <option value="Rodoviário">Rodoviário (Caminhão/Sider)</option>
+                                        <option value="Ferroviário">Ferroviário (Transbordo)</option>
+                                        <option value="Marítimo">Marítimo (Porto/Navio)</option>
+                                        <option value="Aéreo">Aéreo (Expresso/Especial)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-2">Commodity / Produto</label>
+                                    <select id="product-select" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy font-medium">
+                                        <option value="Soja">Soja em Grãos</option>
+                                        <option value="Milho">Milho</option>
+                                        <option value="Gergelim">Gergelim (Safrinha 2027)</option>
+                                        <option value="Outros">Outras Cargas Agro/Gerais</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-2">Volume (Toneladas)</label>
+                                    <input type="number" id="volume-input" min="1" value="500" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy font-medium" placeholder="Ex: 500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-2">Origem (Cidade/UF)</label>
+                                    <input type="text" id="origin-input" value="Palmas - TO" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy font-medium" placeholder="Ex: Pedro Afonso - TO">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-2">Destino (Cidade/Porto)</label>
+                                    <input type="text" id="dest-input" value="Porto de Itaqui - MA" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy font-medium" placeholder="Ex: Porto de Itaqui">
+                                </div>
+                            </div>
+
+                            <div class="pt-2">
+                                <button type="submit" class="w-full bg-navy hover:bg-navy-dark text-white font-heading font-bold text-sm uppercase tracking-wider py-4 rounded-lg transition-colors shadow-md">
+                                    Calcular Estimativa de Operação
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- RESULT DISPLAY -->
+                        <div id="calc-result" class="hidden mt-6 pt-6 border-t border-gray-200 bg-white p-6 rounded-xl border-l-4 border-agroGreen">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                <div>
+                                    <span class="text-xs uppercase font-heading font-bold text-gray-400">Resumo da Estimativa</span>
+                                    <div id="result-summary" class="text-sm font-semibold text-navy mt-1"></div>
+                                    <div class="text-xs text-gray-500 mt-0.5">Estimativa sujeita a confirmação de rota e Basis do dia.</div>
+                                </div>
+                                <a id="send-whatsapp-calc" href="#" target="_blank" class="inline-flex items-center gap-2 bg-agroGreen hover:bg-agroGreen-dark text-white px-6 py-3 rounded-lg font-heading font-bold text-xs uppercase tracking-wider transition-colors w-full sm:w-auto justify-center">
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                    <span>Enviar Proposta ao WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SOBRE A EMPRESA & GOVERNAÇA -->
+    <section id="sobre" class="py-20 bg-iceBg border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&q=80&w=1200" alt="Logística de Grãos Moraes e Moreira" class="rounded-2xl shadow-2xl object-cover w-full h-[450px]">
+                        
+                        <div class="absolute -bottom-6 -right-6 hidden sm:block bg-navy text-white p-6 rounded-xl shadow-xl max-w-xs border-b-4 border-agroGreen">
+                            <div class="text-3xl font-extrabold font-heading text-emerald-400">100%</div>
+                            <div class="text-xs text-gray-200 font-medium uppercase mt-1">Compromisso com Margem &amp; Segurança Contratual</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-agroGreen">Solidez Executiva</span>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight mt-2 mb-6">Moraes &amp; Moreira Logística</h3>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Fundada sob o comando executivo de <strong>Francisco Moraes</strong> — especialista sênior em originação de commodities, gestão de P&amp;L e Perito Judicial no TJTO —, a <strong>Moraes &amp; Moreira Logística</strong> atua como ponte estratégica entre produtores rurais, tradings e indústrias agroindustriais.
+                    </p>
+                    
+                    <p class="text-gray-600 leading-relaxed mb-6 text-sm">
+                        Com forte presença no corredor MATOPIBA (Tocantins, Maranhão, Piauí e Bahia), nossa atuação abrange o gerenciamento inteligente de fretes rodoviários e multimodais, estruturação de operações de Barter e travamento antecipado de safras futuras.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 border-t border-gray-200 pt-6">
+                        <div>
+                            <div class="font-heading font-bold text-2xl text-navy">MATOPIBA</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Atuação Regional Direta</div>
+                        </div>
+                        <div>
+                            <div class="font-heading font-bold text-2xl text-agroGreen">C-Level</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Governança &amp; Gestão de Risco</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: RODAPÉ CORPORATIVO & CONTATO -->
+    <footer id="contato" class="bg-navy-dark text-white pt-16 pb-12 border-t-4 border-agroGreen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- COL 1: BRAND -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="flex items-center justify-center bg-white text-navy font-extrabold px-3 py-1.5 rounded">
+                            <span class="text-xl font-heading">M<span class="text-agroGreen">&amp;</span>M</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-heading font-bold text-white text-base tracking-tight leading-none">Moraes &amp; Moreira</span>
+                            <span class="font-heading font-medium text-emerald-400 text-[10px] tracking-widest uppercase mt-0.5">LOGÍSTICA</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed mb-4">
+                        Excelência em originação de commodities, engenharia de rotas e soluções de logística multimodal para o agronegócio global.
+                    </p>
+                    <div class="text-xs text-gray-400 font-mono">
+                        moraesemoreira.com.br
+                    </div>
+                </div>
+
+                <!-- COL 2: QUICK LINKS -->
+                <div>
+                    <h5 class="font-heading font-bold text-sm uppercase tracking-wider text-emerald-400 mb-4">Navegação</h5>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#inicio" class="hover:text-white transition-colors">Início</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Serviços Executivos</a></li>
+                        <li><a href="#cotacao" class="hover:text-white transition-colors">Simulador de Cotação</a></li>
+                        <li><a href="#sobre" class="hover:text-white transition-colors">Quem Somos</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: CONTACT INFORMATION -->
+                <div>
+                    <h5 class="font-heading font-bold text-sm uppercase tracking-wider text-emerald-400 mb-4">Contato Direto</h5>
+                    <ul class="space-y-3 text-xs text-gray-300">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Palmas, Tocantins — Brasil</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i>
+                            <span>(63) 98154-0801</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i>
+                            <span>moraes.consultor@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- COL 4: CONTACT FORM -->
+                <div>
+                    <h5 class="font-heading font-bold text-sm uppercase tracking-wider text-emerald-400 mb-4">Mensagem Rápida</h5>
+                    <form onsubmit="handleFooterContact(event)" class="space-y-2">
+                        <input type="text" id="footer-name" required placeholder="Seu Nome" class="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400">
+                        <input type="email" id="footer-email" required placeholder="Seu E-mail" class="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400">
+                        <textarea id="footer-msg" required rows="2" placeholder="Sua Mensagem..." class="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400"></textarea>
+                        <button type="submit" class="w-full bg-agroGreen hover:bg-agroGreen-dark text-white font-heading font-bold text-xs uppercase py-2 rounded transition-colors">
+                            Enviar Contato
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-6 text-center text-xs text-gray-400">
+                <p>&copy; 2026 Moraes &amp; Moreira Logística. Todos os direitos reservados. Palmas - TO.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SERVICE DETAIL MODAL -->
+    <div id="service-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 relative custom-shadow">
+            <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-gray-400 hover:text-navy">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div id="modal-icon" class="w-12 h-12 bg-navy/10 text-navy rounded-lg flex items-center justify-center mb-4"></div>
+            <h4 id="modal-title" class="text-xl font-bold text-navy font-heading mb-2"></h4>
+            <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed mb-6"></p>
+            <a href="https://wa.me/5563981540801?text=Ol%C3%A1,%20gostaria%20de%20detalhes%20sobre%20este%20servi%C3%A7o." target="_blank" class="inline-flex items-center justify-center gap-2 w-full bg-agroGreen hover:bg-agroGreen-dark text-white font-heading font-bold text-xs uppercase py-3 rounded-lg transition-colors">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Falar com Especialista</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Services Data for Modal
+        const serviceData = {
+            origination: {
+                title: "Originação Estratégica",
+                icon: "sprout",
+                desc: "Atuamos diretamente na prospecção e compra de commodities agrícolas (Soja, Milho e Gergelim). Alinhamos travamento antecipado de frete e arbitragem de prêmios de exportação para garantir rentabilidade máxima na safra."
+            },
+            routing: {
+                title: "Engenharia de Rota",
+                icon: "route",
+                desc: "Análise técnica de modais e estudo de viabilidade para escoamento no MATOPIBA e corredores Norte/Sul. Reduzimos custos de transbordo e tempo de trânsito dos grãos."
+            },
+            tracking: {
+                title: "Rastreamento Global em Tempo Real",
+                icon: "satellite",
+                desc: "Monitoramento ponta a ponta dos lotes de carga. Informações precisas sobre o status de transporte da fazenda até o terminal portuário ou cliente final."
+            },
+            multimodal: {
+                title: "Transporte Multimodal",
+                icon: "network",
+                desc: "Soluções integradas que combinam modais Rodoviário, Ferroviário, Marítimo e Aéreo, garantindo máxima eficiência no transporte de safras e insumos agrícolas."
+            },
+            contracts: {
+                title: "Gestão Customizada de Contratos",
+                icon: "file-check-2",
+                desc: "Estruturação de contratos futuros, operações de Barter e auditoria judiciária/financeira aplicadas à liquidação de operações agrícolas."
+            },
+            intelligence: {
+                title: "Inteligência de Mercado",
+                icon: "bar-chart-3",
+                desc: "Relatórios analíticos de inteligência comercial sobre curva do Basis regional, cotações da CBOT e matriz de fretes para tomada de decisão executiva."
+            }
+        };
+
+        function openServiceModal(key) {
+            const data = serviceData[key];
+            if (!data) return;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-desc').innerText = data.desc;
+            document.getElementById('modal-icon').innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6"></i>`;
+            lucide.createIcons();
+            document.getElementById('service-modal').classList.remove('hidden');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('service-modal').classList.add('hidden');
+        }
+
+        // Calculation & Simulator Form Logic
+        function handleCalculate(e) {
+            e.preventDefault();
+            const modal = document.getElementById('modal-select').value;
+            const product = document.getElementById('product-select').value;
+            const volume = document.getElementById('volume-input').value;
+            const origin = document.getElementById('origin-input').value;
+            const dest = document.getElementById('dest-input').value;
+
+            const summaryText = `Modal: ${modal} | Produto: ${product} | Volume: ${volume} Ton. (${origin} ➔ ${dest})`;
+            document.getElementById('result-summary').innerText = summaryText;
+
+            // WhatsApp Message Builder
+            const waText = encodeURIComponent(`Olá, Francisco. Gostaria de uma cotação formal com os seguintes dados:\n- Modal: ${modal}\n- Produto: ${product}\n- Volume: ${volume} Toneladas\n- Origem: ${origin}\n- Destino: ${dest}`);
+            document.getElementById('send-whatsapp-calc').href = `https://wa.me/5563981540801?text=${waText}`;
+
+            document.getElementById('calc-result').classList.remove('hidden');
+        }
+
+        // Footer Contact Logic
+        function handleFooterContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('footer-name').value;
+            const email = document.getElementById('footer-email').value;
+            const msg = document.getElementById('footer-msg').value;
+
+            const waText = encodeURIComponent(`Olá, meu nome é ${name} (${email}). Mensagem: ${msg}`);
+            window.open(`https://wa.me/5563981540801?text=${waText}`, '_blank');
+        }
+    </script>
+</body>
+</html>
